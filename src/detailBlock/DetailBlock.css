@@ -1,0 +1,13 @@
+#detailBlock {
+
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-areas: "."
+                       "text"
+                       "."
+}
+
+#detailBlock > h1 {
+  text-align: center;
+  grid-area: text;
+}

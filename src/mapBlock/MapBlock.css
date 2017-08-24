@@ -1,0 +1,13 @@
+#mapBlock {
+
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-areas: "."
+                       "text"
+                       "."
+}
+
+#mapBlock > h1 {
+  text-align: center;
+  grid-area: text;
+}

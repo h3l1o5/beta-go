@@ -1,0 +1,42 @@
+.container {
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  width: calc(100% - 20px);
+  height: calc(100% - 20px);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+  grid-template-areas: "header header header header header detail detail"
+                       "map map charts charts charts detail detail"
+                       "map map charts charts charts detail detail"
+                       "map map charts charts charts detail detail";  
+}
+
+.container div {
+  height: 100%;  
+}
+
+.container #header {
+  background-color: #D96459;
+  grid-area: header;
+}
+
+.container #mapBlock {
+  background-color: #F2AE72;
+  grid-area: map;
+}
+
+.container #chartsBlock {
+  background-color: #F2E394;
+  grid-area: charts;
+}
+
+.container #detailBlock {
+  background-color: #588C73;
+  grid-area: detail;
+}
+
