@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "express": "^4.15.4",
+    "morgan": "^1.8.2",
     "react": "^15.6.1",
     "react-dom": "^15.6.1"
   },
@@ -19,8 +20,7 @@
     "clean": "rm -rf build/",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-
     "server": "nodemon --watch server --exec babel-node -- server/index.js",
-    "start-prod": "npm run build && babel-node -- server/index.js"
+    "start-prod": "npm run build && sudo PORT=80 babel-node -- server/index.js"
   }
 }
