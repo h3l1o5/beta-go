@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
-import './App.css';
+import './App.css'
 import ChartsBlock from './chartsBlock/ChartsBlock'
 import DetailBlock from './detailBlock/DetailBlock'
 import Header from './header/Header'
@@ -15,8 +15,8 @@ class App extends Component {
         <ChartsBlock />
         <DetailBlock />
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App

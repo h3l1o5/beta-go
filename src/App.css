@@ -1,5 +1,4 @@
 .container {
-  height: 100%;
   margin-left: auto;
   margin-right: auto;
   margin-top: 10px;
@@ -7,36 +6,34 @@
   height: calc(100% - 20px);
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 2fr 2fr 1fr;
   grid-column-gap: 10px;
   grid-row-gap: 10px;
   grid-template-areas: "header header header header header detail detail"
-                       "map map charts charts charts detail detail"
-                       "map map charts charts charts detail detail"
-                       "map map charts charts charts detail detail";  
-}
-
-.container div {
-  height: 100%;  
+    "map map charts charts charts detail detail"
+    "map map charts charts charts detail detail"
+    "map map charts charts charts detail detail";
 }
 
 .container #header {
-  background-color: #D96459;
+  text-align: center;
+  background-color: #d96459;
   grid-area: header;
 }
 
 .container #mapBlock {
-  background-color: #F2AE72;
+  background-color: #f2ae72;
   grid-area: map;
 }
 
 .container #chartsBlock {
-  background-color: #F2E394;
+  text-align: center;
+  background-color: #f2e394;
   grid-area: charts;
 }
 
 .container #detailBlock {
-  background-color: #588C73;
+  text-align: center;
+  background-color: #588c73;
   grid-area: detail;
 }
-
