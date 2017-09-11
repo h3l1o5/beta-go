@@ -1,7 +1,7 @@
-import ChargeStation from '../models/ChargeStation'
-import fs from 'fs'
-import path from 'path'
-import _ from 'lodash'
+const ChargeStation = require('../models/ChargeStation')
+const fs = require('fs')
+const path = require('path')
+const _ = require('lodash')
 
 const ensureStationsExisting = () => {
   ChargeStation.find({}, (err, stations) => {
@@ -29,4 +29,4 @@ const ensureStationsExisting = () => {
   })
 }
 
-export { ensureStationsExisting }
+module.exports = { ensureStationsExisting }

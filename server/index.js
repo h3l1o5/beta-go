@@ -1,12 +1,28 @@
-import express from 'express'
-import path from 'path'
-import logger from 'morgan'
-import mongoose from 'mongoose'
+const express = require('express')
+const http = require('http')
+const https = require('https')
+const path = require('path')
+const fs = require('fs')
+const logger = require('morgan')
+const mongoose = require('mongoose')
 
-import { ensureStationsExisting } from './data/migrate'
-import apiRoute from './route/api/index'
+const { ensureStationsExisting } = require('./data/migrate')
+const apiRoute = require('./route/api/index')
 
 const app = express()
+const SERVER_CONFIG = {}
+if (process.env.PROD) {
+  SERVER_CONFIG.key = fs.readFileSync(
+    path.join(__dirname, '/../../ssl/private.key')
+  )
+  SERVER_CONFIG.cert = fs.readFileSync(
+    path.join(__dirname, '/../../ssl/certificate.crt')
+  )
+}
+
+const server = process.env.PROD
+  ? https.createServer(SERVER_CONFIG, app)
+  : http.createServer(app)
 
 // db
 mongoose.Promise = global.Promise
@@ -24,6 +40,6 @@ app.get('*', (req, res) => {
 })
 
 const port = process.env.PORT || 3001
-app.listen(port, () => {
+server.listen(port, () => {
   console.log(`server running on port ${port}`)
 })

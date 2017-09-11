@@ -1,15 +1,25 @@
+/* eslint-disable no-undef */
+
 import React, { Component } from 'react'
-import { withGoogleMap, GoogleMap, Marker, Circle } from 'react-google-maps'
+import {
+  withGoogleMap,
+  GoogleMap,
+  Marker,
+  DirectionsRenderer,
+} from 'react-google-maps'
 import _ from 'lodash'
+import axios from 'axios'
+
+import stationNorth from '../icons/station_north.png'
+import stationSouth from '../icons/station_south.png'
 
 // Wrap all `react-google-maps` components with `withGoogleMap` HOC
 // and name it GettingStartedGoogleMap
 const GettingStartedGoogleMap = withGoogleMap(props => (
   <GoogleMap
     ref={props.onMapLoad}
-    defaultZoom={3}
-    defaultCenter={{ lat: -25.363882, lng: 131.044922 }}
-    onClick={props.onMapClick}
+    defaultZoom={8}
+    defaultCenter={{ lat: 23.8, lng: 121 }}
     options={{
       gestureHandling: 'cooperative',
       styles: [
@@ -26,44 +36,87 @@ const GettingStartedGoogleMap = withGoogleMap(props => (
       ],
     }}
   >
-    {props.markers.map((marker, index) => (
-      <Marker
-        {...marker}
-        onRightClick={() => props.onMarkerRightClick(index)}
-      />
-    ))}
-    <Circle />
+    {props.stations &&
+      props.stations.map(station => (
+        <Marker
+          key={station.id}
+          position={{
+            lat: station.location.lng,
+            lng: station.location.lat,
+          }}
+          defaultAnimation={2}
+          options={{
+            icon: station.direction === 'N' ? stationNorth : stationSouth,
+          }}
+        />
+      ))}
+    {!_.isEmpty(props.directions) &&
+      _.map(props.directions, direction => (
+        <DirectionsRenderer
+          directions={direction}
+          options={{
+            suppressMarkers: true,
+            polylineOptions: { strokeColor: 'green', strokeWeight: 10 },
+          }}
+        />
+      ))}
   </GoogleMap>
 ))
 
-class Map2 extends Component {
+class Map extends Component {
   state = {
-    markers: [
-      {
-        position: {
-          lat: 25.1183111,
-          lng: 121.7316361,
+    stations: [],
+    directions: [],
+  }
+
+  componentWillMount() {
+    axios
+      .get('/api/chargeStations')
+      .then(res => this.setState({ stations: res.data.stations }))
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (_.isEmpty(prevState.stations)) {
+      console.log(google.maps)
+      const DirectionsService = new google.maps.DirectionsService()
+
+      let station1 = this.state.stations[1].location
+      let origin = new google.maps.LatLng(station1.lng, station1.lat)
+      let station2 = this.state.stations[10].location
+      let destination = new google.maps.LatLng(station2.lng, station2.lat)
+      DirectionsService.route(
+        {
+          origin,
+          destination,
+          travelMode: google.maps.TravelMode.DRIVING,
         },
-        key: `1`,
-        defaultAnimation: 2,
-      },
-      {
-        position: {
-          lat: 25.1187861,
-          lng: 121.7317639,
+        (result, status) => {
+          if (status === google.maps.DirectionsStatus.OK) {
+            this.setState({ directions: [...this.state.directions, result] })
+          } else {
+            console.error(`error fetching directions ${result}`)
+          }
+        }
+      )
+      station1 = this.state.stations[11].location
+      origin = new google.maps.LatLng(station1.lng, station1.lat)
+      station2 = this.state.stations[20].location
+      destination = new google.maps.LatLng(station2.lng, station2.lat)
+      DirectionsService.route(
+        {
+          origin,
+          destination,
+          travelMode: google.maps.TravelMode.DRIVING,
         },
-        key: `2`,
-        defaultAnimation: 2,
-      },
-      {
-        position: {
-          lat: 25.1095667,
-          lng: 121.7259056,
-        },
-        key: `3`,
-        defaultAnimation: 2,
-      },
-    ],
+        (result, status) => {
+          if (status === google.maps.DirectionsStatus.OK) {
+            this.setState({ directions: [...this.state.directions, result] })
+          } else {
+            console.error(`error fetching directions ${result}`)
+          }
+        }
+      )
+    }
   }
 
   handleMapLoad = map => {
@@ -73,48 +126,17 @@ class Map2 extends Component {
     }
   }
 
-  handleMapClick = event => {
-    const nextMarkers = [
-      ...this.state.markers,
-      {
-        position: event.latLng,
-        defaultAnimation: 2,
-        key: Date.now(), // Add a key property for: http://fb.me/react-warning-keys
-      },
-    ]
-    this.setState({
-      markers: nextMarkers,
-    })
-  }
-
-  handleMarkerRightClick = targetMarker => {
-    /*
-     * All you modify is data, and the view is driven by data.
-     * This is so called data-driven-development. (And yes, it's now in
-     * web front end and even with google maps API.)
-     */
-    const nextMarkers = this.state.markers.filter((marker, index) => {
-      console.log(marker)
-      return index !== targetMarker
-    })
-    console.log(nextMarkers)
-    this.setState({
-      markers: nextMarkers,
-    })
-  }
-
   render() {
     return (
       <GettingStartedGoogleMap
         containerElement={<div style={{ height: `100%` }} />}
         mapElement={<div style={{ height: `100%` }} />}
         onMapLoad={this.handleMapLoad}
-        onMapClick={this.handleMapClick}
-        markers={this.state.markers}
-        onMarkerRightClick={this.handleMarkerRightClick}
+        stations={this.state.stations}
+        directions={this.state.directions}
       />
     )
   }
 }
 
-export default Map2
+export default Map

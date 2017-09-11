@@ -1,9 +1,9 @@
-import express from 'express'
+const express = require('express')
 
-import chargeStation from './chargeStation'
+const chargeStation = require('./chargeStation')
 
 const router = express()
 
 router.use('/chargeStations', chargeStation)
 
-export default router
+module.exports = router

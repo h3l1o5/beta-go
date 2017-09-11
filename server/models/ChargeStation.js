@@ -1,4 +1,4 @@
-import mongoose from 'mongoose'
+const mongoose = require('mongoose')
 
 const chargeStationSchema = mongoose.Schema({
   id: { type: String, required: true, unique: true },
@@ -13,4 +13,4 @@ const chargeStationSchema = mongoose.Schema({
   data: [],
 })
 
-export default mongoose.model('ChargeStation', chargeStationSchema)
+module.exports = mongoose.model('ChargeStation', chargeStationSchema)

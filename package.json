@@ -17,6 +17,7 @@
     "react-scripts": "1.0.11"
   },
   "dependencies": {
+    "axios": "^0.16.2",
     "express": "^4.15.4",
     "lodash": "^4.17.4",
     "mongoose": "^4.11.10",
@@ -31,7 +32,8 @@
     "clean": "rm -rf build/",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "server": "nodemon --watch server --exec babel-node -- server/index.js",
+    "server": "nodemon --watch server server/index.js",
     "start-prod": "npm run build && sudo PORT=80 babel-node -- server/index.js"
-  }
+  },
+  "proxy": "http://localhost:3001/"
 }

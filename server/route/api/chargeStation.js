@@ -1,12 +1,12 @@
-import express from 'express'
-import _ from 'lodash'
+const express = require('express')
+const _ = require('lodash')
 
-import ChargeStation from '../../models/ChargeStation'
+const ChargeStation = require('../../models/ChargeStation')
 
 const router = express.Router()
 
 router.get('/', (req, res, next) => {
-  ChargeStation.find({}, (err, stations) => {
+  ChargeStation.find({ direction: 'S' }, (err, stations) => {
     if (err) {
       return next(err)
     }
@@ -24,4 +24,4 @@ router.get('/', (req, res, next) => {
   })
 })
 
-export default router
+module.exports = router
