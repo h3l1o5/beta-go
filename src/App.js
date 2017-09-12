@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 
 import './App.css'
 import ChartsBlock from './chartsBlock/ChartsBlock'
-import DetailBlock from './detailBlock/DetailBlock'
 import Header from './header/Header'
 import MapBlock from './mapBlock/MapBlock'
 
@@ -13,7 +12,6 @@ class App extends Component {
         <Header />
         <MapBlock />
         <ChartsBlock />
-        <DetailBlock />
       </div>
     )
   }

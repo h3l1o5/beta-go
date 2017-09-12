@@ -6,7 +6,10 @@ const fs = require('fs')
 const logger = require('morgan')
 const mongoose = require('mongoose')
 
-const { ensureStationsExisting } = require('./data/migrate')
+const {
+  ensureStationsExisting,
+  ensureStationsDataExisting,
+} = require('./data/migrate')
 const apiRoute = require('./route/api/index')
 
 const app = express()
@@ -28,6 +31,7 @@ const server = process.env.PROD
 mongoose.Promise = global.Promise
 mongoose.connect('mongodb://localhost:27017/beta-go', { useMongoClient: true })
 ensureStationsExisting()
+ensureStationsDataExisting()
 
 app.use(express.static(path.join(__dirname, '/../build/')))
 

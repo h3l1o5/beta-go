@@ -9,15 +9,13 @@
   grid-template-rows: 1fr 2fr 2fr 1fr;
   grid-column-gap: 10px;
   grid-row-gap: 10px;
-  grid-template-areas: "header header header header header detail detail"
-    "map map charts charts charts detail detail"
-    "map map charts charts charts detail detail"
-    "map map charts charts charts detail detail";
+  grid-template-areas: "header header charts charts charts charts charts"
+    "map map charts charts charts charts charts"
+    "map map charts charts charts charts charts"
+    "map map charts charts charts charts charts";
 }
 
 .container #header {
-  text-align: center;
-  background-color: #d96459;
   grid-area: header;
 }
 

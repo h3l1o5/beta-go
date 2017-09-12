@@ -10,7 +10,6 @@ const chargeStationSchema = mongoose.Schema({
     lat: { type: Number, required: true },
     lng: { type: Number, required: true },
   },
-  data: [],
 })
 
 module.exports = mongoose.model('ChargeStation', chargeStationSchema)
