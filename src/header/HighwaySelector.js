@@ -7,15 +7,15 @@ import { setUserSelectedHighway } from '../actions/userSelectionsActions'
 const highwayOptions = [
   {
     text: '國道一號',
-    value: '1',
+    value: '國道一號',
   },
   {
     text: '國道三號',
-    value: '3',
+    value: '國道三號',
   },
   {
     text: '國道五號',
-    value: '5',
+    value: '國道五號',
   },
 ]
 

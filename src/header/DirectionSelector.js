@@ -7,11 +7,11 @@ import { setUserSelectedDirection } from '../actions/userSelectionsActions'
 const directionOptions = [
   {
     text: '南下',
-    value: 'S',
+    value: '南下',
   },
   {
     text: '北上',
-    value: 'N',
+    value: '北上',
   },
 ]
 

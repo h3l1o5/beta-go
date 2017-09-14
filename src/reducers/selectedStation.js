@@ -1,4 +1,4 @@
-import { SET_SELECTED_STATION_INFO } from '../actions/types'
+import { SET_SELECTED_STATION } from '../actions/types'
 
 const initialState = {
   id: null,
@@ -6,19 +6,19 @@ const initialState = {
   highway: null,
   direction: null,
   region: null,
-  data: null,
+  predictData: null,
 }
 
 export default (state = null, action = {}) => {
   switch (action.type) {
-    case SET_SELECTED_STATION_INFO:
+    case SET_SELECTED_STATION:
       return {
-        ...state,
         id: action.id,
         name: action.name,
         highway: action.highway,
         direction: action.direction,
         region: action.region,
+        predictData: action.predictData,
       }
     default:
       return state

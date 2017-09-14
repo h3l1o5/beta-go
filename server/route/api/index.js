@@ -1,11 +1,11 @@
 const express = require('express')
 
-const chargeStations = require('./chargeStations')
-const chargeStation = require('./chargeStation')
+const stations = require('./stations')
+const station = require('./station')
 
 const router = express()
 
-router.use('/chargeStations', chargeStations)
-router.use('/chargeStation', chargeStation)
+router.use('/stations', stations)
+router.use('/station', station)
 
 module.exports = router

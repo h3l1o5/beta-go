@@ -8,7 +8,7 @@ const mongoose = require('mongoose')
 
 const {
   ensureStationsExisting,
-  ensureStationsDataExisting,
+  ensureStationsPredictDataExisting,
 } = require('./data/migrate')
 const apiRoute = require('./route/api/index')
 
@@ -31,7 +31,7 @@ const server = process.env.PROD
 mongoose.Promise = global.Promise
 mongoose.connect('mongodb://localhost:27017/beta-go', { useMongoClient: true })
 ensureStationsExisting()
-ensureStationsDataExisting()
+ensureStationsPredictDataExisting()
 
 app.use(express.static(path.join(__dirname, '/../build/')))
 

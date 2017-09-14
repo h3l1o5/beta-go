@@ -13,7 +13,7 @@ import axios from 'axios'
 
 import { fetchAndSetStations } from '../actions/stationsActions'
 import { getStationInfo } from '../actions/userSelectionsActions'
-import { fetchAndSetStationInfo } from '../actions/selectedStationActions'
+import { fetchAndSetSelectedStation } from '../actions/selectedStationActions'
 
 import stationNorth from '../icons/station_north_s.png'
 import stationSouth from '../icons/station_south_s.png'
@@ -50,7 +50,7 @@ const GettingStartedGoogleMap = withGoogleMap(props => (
           }}
           defaultAnimation={4}
           options={{
-            icon: station.direction === 'N' ? stationNorth : stationSouth,
+            icon: station.direction === '北上' ? stationNorth : stationSouth,
           }}
           onClick={() => props.onStationClick(station.id)}
         />
@@ -79,7 +79,7 @@ class Map extends Component {
   }
 
   onStationClick = id => {
-    this.props.fetchAndSetStationInfo(id)
+    this.props.fetchAndSetSelectedStation(id)
   }
 
   render() {
@@ -101,5 +101,5 @@ const mapStateToProps = state => ({
 
 export default connect(mapStateToProps, {
   fetchAndSetStations,
-  fetchAndSetStationInfo,
+  fetchAndSetSelectedStation,
 })(Map)
