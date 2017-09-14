@@ -4,7 +4,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import _ from 'lodash'
 
-import AmountPredictBarChart from './AmountPredictBarChart'
+import AmountPredictBarchart from './AmountPredictBarchart'
+import AmountPredictPiechart from './AmountPredictPiechart'
 
 import './presnetationBlock.css'
 
@@ -27,7 +28,18 @@ class PresentationBlock extends Component {
     return (
       <div id="presentationBlock">
         {selectedStationPredictData ? (
-          <AmountPredictBarChart data={selectedStationPredictData} />
+          <div id="charts">
+            <div id="firstRow">
+              <AmountPredictBarchart data={selectedStationPredictData} />
+              <AmountPredictPiechart />
+              <div id="weather">
+                <h1>天氣</h1>
+              </div>
+            </div>
+            <div id="secondRow">
+              <h1>第二列</h1>
+            </div>
+          </div>
         ) : (
           <h1>請選擇一個偵測站</h1>
         )}

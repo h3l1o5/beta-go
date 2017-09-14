@@ -1,0 +1,37 @@
+#presentationBlock > #charts {
+  height: 100%;
+}
+
+#presentationBlock > #charts > #firstRow {
+  width: 100%;
+  height: 50%;
+  margin: 10px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+#presentationBlock > #charts > #firstRow > #amountPredictBarchart {
+  height: 100%;
+}
+
+#presentationBlock > #charts > #firstRow > #amountPredictBarchart > p {
+  text-align: center;
+}
+
+#presentationBlock > #charts > #firstRow > #amountPredictPiechart {
+  height: 100%;
+}
+
+#presentationBlock > #charts > #firstRow > #amountPredictPiechart > p {
+  text-align: center;
+}
+
+#presentationBlock > #charts > #firstRow > #weather {
+  background-color: lightgreen;
+  height: 100%;
+}  
+
+#presentationBlock > #charts > #secondRow {
+  background-color: orchid;
+  height: 100%;
+}

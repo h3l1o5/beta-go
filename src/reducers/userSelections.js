@@ -6,7 +6,6 @@ import {
 const initialState = {
   direction: null,
   highway: null,
-  stationID: null,
 }
 
 export default (state = initialState, action = {}) => {

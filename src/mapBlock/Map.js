@@ -45,12 +45,12 @@ const GettingStartedGoogleMap = withGoogleMap(props => (
         <Marker
           key={station.id}
           position={{
-            lat: station.location.lng,
-            lng: station.location.lat,
+            lat: station.location.lat,
+            lng: station.location.lng,
           }}
-          defaultAnimation={4}
+          defaultAnimation={station.id === props.activeID ? 1 : 4}
           options={{
-            icon: station.direction === '北上' ? stationNorth : stationSouth,
+            icon: station.id === props.activeID ? stationNorth : stationSouth,
           }}
           onClick={() => props.onStationClick(station.id)}
         />
@@ -89,6 +89,9 @@ class Map extends Component {
         mapElement={<div style={{ height: `100%` }} />}
         stations={this.props.stations}
         onStationClick={this.onStationClick}
+        activeID={
+          this.props.selectedStation ? this.props.selectedStation.id : null
+        }
       />
     )
   }
@@ -97,6 +100,7 @@ class Map extends Component {
 const mapStateToProps = state => ({
   userSelections: state.userSelections,
   stations: state.stations,
+  selectedStation: state.selectedStation,
 })
 
 export default connect(mapStateToProps, {

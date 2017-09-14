@@ -20,12 +20,9 @@
 }
 
 .container #mapBlock {
-  background-color: #f2ae72;
   grid-area: map;
 }
 
 .container #presentationBlock {
-  text-align: center;
-  background-color: #f2e394;
   grid-area: presentation;
 }
