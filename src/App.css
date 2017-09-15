@@ -1,22 +1,28 @@
 .container {
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 10px;
-  width: calc(100% - 20px);
-  height: calc(100% - 20px);
+  padding: 10px;
+  width: 100%;
+  min-width: 1440px;
+  height: 100%;
+  max-height: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr 2fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 2fr 2fr 1fr;
   grid-column-gap: 10px;
   grid-row-gap: 10px;
-  grid-template-areas: "header header header header header header header"
+  grid-template-areas: "header header navigation navigation navigation navigation navigation"
     "map map presentation presentation presentation presentation presentation"
     "map map presentation presentation presentation presentation presentation"
     "map map presentation presentation presentation presentation presentation";
 }
 
-.container #header {
+.container #menu {
+  background-color: pink;
   grid-area: header;
+}
+
+.container #navigationBlock {
+  background-color: lightcyan;
+  grid-area: navigation;
 }
 
 .container #mapBlock {

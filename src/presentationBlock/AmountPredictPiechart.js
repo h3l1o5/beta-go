@@ -25,7 +25,6 @@ class AmountPredictPiechart extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps)
     const { amountPredictBarchart } = nextProps.presentationBlock
     const { predictData } = nextProps.selectedStation
     if (amountPredictBarchart.activeID) {
@@ -41,13 +40,15 @@ class AmountPredictPiechart extends Component {
         { name: '聯結車', value: targetData.聯結車, color: '#1A2B3C' },
       ]
       this.setState({ data })
+    } else {
+      this.setState({ data: null })
     }
   }
 
   render() {
     return (
       <div id="amountPredictPiechart">
-        <p>單一小時各車種佔比</p>
+        <p>單一小時各車種數量</p>
         {this.state.data ? (
           <ResponsiveContainer width="100%" height="80%">
             <PieChart>
@@ -66,7 +67,7 @@ class AmountPredictPiechart extends Component {
             </PieChart>
           </ResponsiveContainer>
         ) : (
-          <h1>選擇一段時間</h1>
+          <h1 id="tip">選擇一段時間</h1>
         )}
       </div>
     )

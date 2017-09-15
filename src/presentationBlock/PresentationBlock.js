@@ -41,7 +41,7 @@ class PresentationBlock extends Component {
             </div>
           </div>
         ) : (
-          <h1>請選擇一個偵測站</h1>
+          <h1 id="tip">請選擇一個偵測站</h1>
         )}
       </div>
     )

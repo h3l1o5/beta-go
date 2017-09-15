@@ -4,12 +4,12 @@ import { Dropdown } from 'semantic-ui-react'
 import DirectionSelector from './DirectionSelector'
 import HighwaySelector from './HighwaySelector'
 
-import './Header.css'
+import './Menu.css'
 
-class Header extends Component {
+class Menu extends Component {
   render() {
     return (
-      <div id="header">
+      <div id="menu">
         <DirectionSelector />
         <HighwaySelector />
       </div>
@@ -17,4 +17,4 @@ class Header extends Component {
   }
 }
 
-export default Header
+export default Menu

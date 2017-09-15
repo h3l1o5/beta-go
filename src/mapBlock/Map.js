@@ -2,21 +2,17 @@
 
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import {
-  withGoogleMap,
-  GoogleMap,
-  Marker,
-  DirectionsRenderer,
-} from 'react-google-maps'
+import { withGoogleMap, GoogleMap, Marker, InfoWindow } from 'react-google-maps'
 import _ from 'lodash'
 import axios from 'axios'
 
 import { fetchAndSetStations } from '../actions/stationsActions'
 import { getStationInfo } from '../actions/userSelectionsActions'
 import { fetchAndSetSelectedStation } from '../actions/selectedStationActions'
+import { setAmountPredictBarchartActiveID } from '../actions/presentationBlockActions'
 
-import stationNorth from '../icons/station_north_s.png'
-import stationSouth from '../icons/station_south_s.png'
+import stationActive from '../icons/station_active.png'
+import stationNormal from '../icons/station_normal.png'
 
 // Wrap all `react-google-maps` components with `withGoogleMap` HOC
 // and name it GettingStartedGoogleMap
@@ -48,12 +44,23 @@ const GettingStartedGoogleMap = withGoogleMap(props => (
             lat: station.location.lat,
             lng: station.location.lng,
           }}
-          defaultAnimation={station.id === props.activeID ? 1 : 4}
+          defaultAnimation={4}
           options={{
-            icon: station.id === props.activeID ? stationNorth : stationSouth,
+            icon: station.id === props.activeID ? stationActive : stationNormal,
           }}
           onClick={() => props.onStationClick(station.id)}
-        />
+        >
+          {station.id === props.activeID && (
+            <InfoWindow closeBoxURL="">
+              <div>
+                <p>
+                  {station.highway} {station.direction}
+                </p>
+                <p>{station.name}</p>
+              </div>
+            </InfoWindow>
+          )}
+        </Marker>
       ))}
   </GoogleMap>
 ))
@@ -80,6 +87,7 @@ class Map extends Component {
 
   onStationClick = id => {
     this.props.fetchAndSetSelectedStation(id)
+    this.props.setAmountPredictBarchartActiveID(null)
   }
 
   render() {
@@ -106,4 +114,5 @@ const mapStateToProps = state => ({
 export default connect(mapStateToProps, {
   fetchAndSetStations,
   fetchAndSetSelectedStation,
+  setAmountPredictBarchartActiveID,
 })(Map)
