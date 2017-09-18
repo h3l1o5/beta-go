@@ -1,34 +1,40 @@
-.container {
-  padding: 10px;
-  width: 100%;
-  min-width: 1440px;
-  height: 100%;
-  max-height: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr 2fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 2fr 2fr 1fr;
-  grid-column-gap: 10px;
-  grid-row-gap: 10px;
-  grid-template-areas: "header header navigation navigation navigation navigation navigation"
-    "map map presentation presentation presentation presentation presentation"
-    "map map presentation presentation presentation presentation presentation"
-    "map map presentation presentation presentation presentation presentation";
+#app {
+  background-color: #009688;
+  height: 100vh;
+  max-height: 100vh;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
 }
 
-.container #menu {
-  background-color: pink;
-  grid-area: header;
+#app-first-row {
+  flex: 1;
+  height: calc(15% - 15px);
+  margin: 10px 10px 10px;
+  display: flex;
+  flex-direction: row;
 }
 
-.container #navigationBlock {
-  background-color: lightcyan;
-  grid-area: navigation;
+#app-first-row > #menu {
+  flex: 1;
 }
 
-.container #mapBlock {
-  grid-area: map;
+#app-first-row > #navigationBlock {
+  flex: 3;
 }
 
-.container #presentationBlock {
-  grid-area: presentation;
+#app-second-row {
+  flex: 6;
+  height: calc(85% - 15px);
+  margin: 0 10px 10px;
+  display: flex;
+  flex-direction: row;
+}
+
+#app-second-row > #mapBlock {
+  flex: 1;
+}
+
+#app-second-row > #presentationBlock {
+  flex: 3;
 }

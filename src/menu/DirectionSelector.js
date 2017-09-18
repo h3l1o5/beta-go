@@ -29,9 +29,9 @@ class DirectionSelector extends Component {
       <div id="directionSelector">
         <Dropdown
           placeholder="選擇方向"
-          selection
           options={directionOptions}
           onChange={this.handleChange}
+          basic
         />
       </div>
     )

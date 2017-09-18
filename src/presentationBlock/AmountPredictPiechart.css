@@ -1,0 +1,9 @@
+#amountPredictPiechart > p {
+  text-align: center;
+}
+
+#amountPredictPiechart > #tip {
+  height: 100%;
+  padding-top: 30%;
+  text-align: center;
+}

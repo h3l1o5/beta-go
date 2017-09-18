@@ -28,8 +28,7 @@ class HighwaySelector extends Component {
     return (
       <div id="highwaySelector">
         <Dropdown
-          placeholder="選擇高速公路"
-          selection
+          placeholder="選擇國道"
           options={highwayOptions}
           onChange={this.handleChange}
         />

@@ -7,7 +7,7 @@ import _ from 'lodash'
 import AmountPredictBarchart from './AmountPredictBarchart'
 import AmountPredictPiechart from './AmountPredictPiechart'
 
-import './presnetationBlock.css'
+import './PresentationBlock.css'
 
 class PresentationBlock extends Component {
   state = {

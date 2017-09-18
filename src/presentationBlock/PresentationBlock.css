@@ -1,33 +1,35 @@
+#presentationBlock {
+  background-color: #BCAAA4;
+  height: 100%;
+  margin-left: 10px;
+  border-radius: 10px;
+  display: flex;
+}
+
 #presentationBlock > #charts {
   height: 100%;
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;  
 }
 
 #presentationBlock > #charts > #firstRow {
-  height: 50%;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  flex: 1;
+  height: 100%;
+  display: flex;
 }
 
 #presentationBlock > #charts > #firstRow > #amountPredictBarchart {
-
-}
-
-#presentationBlock > #charts > #firstRow > #amountPredictBarchart > p {
-  text-align: center;
+  flex: 1;
 }
 
 #presentationBlock > #charts > #firstRow > #amountPredictPiechart {
-
+  flex: 1;
 }
 
-#presentationBlock > #charts > #firstRow > #amountPredictPiechart > p {
-  text-align: center;
-}
-
-#presentationBlock > #charts > #firstRow > #amountPredictPiechart > #tip {
-  height: 100%;
-  padding-top: 30%;
-  text-align: center;
+#presentationBlock > #charts > #firstRow > #weather {
+  flex: 1;
 }
 
 #presentationBlock > #charts > #firstRow > #weather {
@@ -35,12 +37,12 @@
 }  
 
 #presentationBlock > #charts > #secondRow {
+  flex: 1;
   background-color: orchid;
-  height: 50%;
+  height: 100%;
 }
 
 #presentationBlock > #tip {
-  height: 100%;
-  padding-top: 30%;
+  margin: auto;
   text-align: center;
 }

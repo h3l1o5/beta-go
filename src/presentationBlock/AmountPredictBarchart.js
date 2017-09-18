@@ -14,6 +14,8 @@ import {
 
 import { setAmountPredictBarchartActiveID } from '../actions/presentationBlockActions'
 
+import './AmountPredictBarchart.css'
+
 class AmountPredictBarchart extends Component {
   handleBarClick = (data, index) => {
     this.props.setAmountPredictBarchartActiveID(data._id)
