@@ -18,6 +18,8 @@ const ensureStationsExisting = () => {
           direction: station.direction,
           location: station.location,
           region: station.region,
+          prior: station.Prior,
+          next: station.Next,
         })
         newStation
           .save()

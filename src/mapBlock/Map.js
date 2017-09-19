@@ -49,18 +49,7 @@ const GettingStartedGoogleMap = withGoogleMap(props => (
             icon: station.id === props.activeID ? stationActive : stationNormal,
           }}
           onClick={() => props.onStationClick(station.id)}
-        >
-          {station.id === props.activeID && (
-            <InfoWindow closeBoxURL="">
-              <div>
-                <p>
-                  {station.highway} {station.direction}
-                </p>
-                <p>{station.name}</p>
-              </div>
-            </InfoWindow>
-          )}
-        </Marker>
+        />
       ))}
   </GoogleMap>
 ))

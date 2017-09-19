@@ -22,10 +22,6 @@ router.get('/:highway/:direction', (req, res, next) => {
   }
 
   direction = direction === 'N' ? '北上' : '南下'
-
-  console.log(highway)
-  console.log(direction)
-
   Station.find({ highway, direction }, (err, stations) => {
     if (err) {
       return next(err)

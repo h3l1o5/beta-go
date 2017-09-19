@@ -10,6 +10,8 @@ const stationSchema = mongoose.Schema({
     lat: { type: Number, required: true },
     lng: { type: Number, required: true },
   },
+  prior: [{ type: String }],
+  next: [{ type: String }],
 })
 
 module.exports = mongoose.model('Station', stationSchema)

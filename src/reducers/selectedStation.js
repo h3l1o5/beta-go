@@ -6,6 +6,8 @@ const initialState = {
   highway: null,
   direction: null,
   region: null,
+  prior: null,
+  next: null,
   predictData: null,
 }
 
@@ -18,6 +20,8 @@ export default (state = null, action = {}) => {
         highway: action.highway,
         direction: action.direction,
         region: action.region,
+        prior: action.prior,
+        next: action.next,
         predictData: action.predictData,
       }
     default:

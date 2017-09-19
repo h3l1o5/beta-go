@@ -33,7 +33,7 @@ class PresentationBlock extends Component {
               <AmountPredictBarchart data={selectedStationPredictData} />
               <AmountPredictPiechart />
               <div id="weather">
-                <h1>天氣</h1>
+                <h1>車速預測</h1>
               </div>
             </div>
             <div id="secondRow">
@@ -41,7 +41,7 @@ class PresentationBlock extends Component {
             </div>
           </div>
         ) : (
-          <h1 id="tip">請選擇一個偵測站</h1>
+          <h1 id="tip">在地圖上選擇一個路段</h1>
         )}
       </div>
     )

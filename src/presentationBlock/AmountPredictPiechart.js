@@ -41,7 +41,7 @@ class AmountPredictPiechart extends Component {
   render() {
     return (
       <div id="amountPredictPiechart">
-        <p>單一小時各車種數量</p>
+        <p>單一小時各車種數量預測</p>
         {this.state.data ? (
           <ResponsiveContainer width="100%" height="80%">
             <PieChart>
