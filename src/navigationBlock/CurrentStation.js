@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import './CurrentStation.css'
 
@@ -15,6 +16,10 @@ const CurrentStation = props => {
       </div>
     </div>
   )
+}
+
+CurrentStation.propTypes = {
+  selectedStation: PropTypes.object.isRequired,
 }
 
 export default CurrentStation

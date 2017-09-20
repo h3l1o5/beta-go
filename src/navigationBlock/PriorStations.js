@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import _ from 'lodash'
 
@@ -32,6 +33,8 @@ class PriorStations extends Component {
             return (
               <div className="listItem">
                 <a
+                  role="button"
+                  tabIndex="0"
                   key={station.id}
                   onClick={() =>
                     this.handleListItemClick(
@@ -51,6 +54,15 @@ class PriorStations extends Component {
       </div>
     )
   }
+}
+
+PriorStations.propTypes = {
+  stationList: PropTypes.array.isRequired,
+  selectedStation: PropTypes.object.isRequired,
+  fetchAndSetSelectedStation: PropTypes.func.isRequired,
+  setUserSelectedDirection: PropTypes.func.isRequired,
+  setUserSelectedHighway: PropTypes.func.isRequired,
+  setAmountPredictBarchartActiveID: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = state => ({

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Dropdown } from 'semantic-ui-react'
 
@@ -36,6 +37,11 @@ class DirectionSelector extends Component {
       </div>
     )
   }
+}
+
+DirectionSelector.propTypes = {
+  userSelections: PropTypes.object.isRequired,
+  setUserSelectedDirection: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = state => ({

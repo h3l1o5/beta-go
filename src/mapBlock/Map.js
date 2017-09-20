@@ -1,13 +1,12 @@
 /* eslint-disable no-undef */
 
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { withGoogleMap, GoogleMap, Marker, InfoWindow } from 'react-google-maps'
+import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps'
 import _ from 'lodash'
-import axios from 'axios'
 
 import { fetchAndSetStations } from '../actions/stationsActions'
-import { getStationInfo } from '../actions/userSelectionsActions'
 import { fetchAndSetSelectedStation } from '../actions/selectedStationActions'
 import { setAmountPredictBarchartActiveID } from '../actions/presentationBlockActions'
 
@@ -93,6 +92,15 @@ class Map extends Component {
       />
     )
   }
+}
+
+Map.propTypes = {
+  stations: PropTypes.array.isRequired,
+  userSelections: PropTypes.object.isRequired,
+  selectedStation: PropTypes.object.isRequired,
+  fetchAndSetStations: PropTypes.func.isRequired,
+  fetchAndSetSelectedStation: PropTypes.func.isRequired,
+  setAmountPredictBarchartActiveID: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = state => ({

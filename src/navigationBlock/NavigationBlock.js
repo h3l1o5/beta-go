@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 import CurrentStation from './CurrentStation'
@@ -26,6 +27,11 @@ const NavigationBlock = props => {
       <div id="requireStationTip">在地圖上選擇一個路段</div>
     </div>
   )
+}
+
+NavigationBlock.propTypes = {
+  selectedStation: PropTypes.object.isRequired,
+  stations: PropTypes.array.isRequired,
 }
 
 const mapStateToProps = state => ({
