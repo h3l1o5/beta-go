@@ -23,7 +23,7 @@ class PriorStations extends Component {
   render() {
     return (
       <div id="priorStations">
-        <p className="sectionName">上一個收費點</p>
+        <p className="sectionName">上一個路段</p>
         <div id="info">
           {_.map(this.props.stationList, station => {
             let changeHighwayTip = ''
@@ -45,7 +45,7 @@ class PriorStations extends Component {
                   {changeHighwayTip}
                   {station.name}
                 </a>
-                <span>{'----------->'}</span>
+                <span>{`-----${station.travelTime}----->`}</span>
               </div>
             )
           })}

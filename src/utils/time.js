@@ -47,4 +47,17 @@ const beautifyDataTime = data => {
   return beautifiedData
 }
 
-export default beautifyDataTime
+const secondToMinute = second => {
+  let min = 0
+  let sec = second
+  while (sec - 60 >= 0) {
+    min += 1
+    sec -= 60
+  }
+  if (sec < 10) {
+    sec = `0${sec}`
+  }
+  return `${min}分${sec}秒`
+}
+
+export { beautifyDataTime, secondToMinute }

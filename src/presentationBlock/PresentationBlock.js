@@ -28,16 +28,22 @@ class PresentationBlock extends Component {
     return (
       <div id="presentationBlock">
         {selectedStationPredictData ? (
-          <div id="charts">
-            <div id="firstRow">
-              <AmountPredictBarchart data={selectedStationPredictData} />
-              <AmountPredictPiechart />
-              <div id="weather">
-                <h1>車速預測</h1>
+          <div id="rows">
+            <div id="realTimeDataRow">
+              <div className="header">道路即時資訊</div>
+              <div className="charts">
+                <h1>即時資訊圖表</h1>
               </div>
             </div>
-            <div id="secondRow">
-              <h1>第二列</h1>
+            <div id="predictDataRow">
+              <div className="header">道路預測資訊</div>
+              <div className="charts">
+                <AmountPredictBarchart data={selectedStationPredictData} />
+                <AmountPredictPiechart />
+                <div id="weather">
+                  <h1>車速預測</h1>
+                </div>
+              </div>
             </div>
           </div>
         ) : (

@@ -6,7 +6,7 @@
   display: flex;
 }
 
-#presentationBlock > #charts {
+#presentationBlock > #rows {
   height: 100%;
   width: 100%;
   padding: 10px;
@@ -14,32 +14,61 @@
   flex-direction: column;  
 }
 
-#presentationBlock > #charts > #firstRow {
+#presentationBlock > #rows .header {
+  margin: auto;
+  font-size: 15px;
+  color: #fff;
+}
+
+#presentationBlock > #rows > #predictDataRow {
   flex: 1;
   height: 100%;
+  padding-top: 5px;
+  border-top: 1px solid #666;
   display: flex;
+  flex-direction: column;
 }
 
-#presentationBlock > #charts > #firstRow > #amountPredictBarchart {
+#presentationBlock > #rows > #predictDataRow > .header {
   flex: 1;
 }
 
-#presentationBlock > #charts > #firstRow > #amountPredictPiechart {
+#presentationBlock > #rows > #predictDataRow > .charts {
+  flex: 7;
+  display: flex;
+  flex-direction: row;
+}
+
+#presentationBlock > #rows > #predictDataRow > .charts > #amountPredictBarchart {
   flex: 1;
 }
 
-#presentationBlock > #charts > #firstRow > #weather {
+#presentationBlock > #rows > #predictDataRow > .charts > #amountPredictPiechart {
   flex: 1;
 }
 
-#presentationBlock > #charts > #firstRow > #weather {
+#presentationBlock > #rows > #predictDataRow > .charts > #weather {
+  flex: 1;
+}
+
+#presentationBlock > #rows > #predictDataRow > .charts > #weather {
   background-color: lightgreen;
 }  
 
-#presentationBlock > #charts > #secondRow {
+#presentationBlock > #rows > #realTimeDataRow {
   flex: 1;
-  background-color: orchid;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+#presentationBlock > #rows > #realTimeDataRow > .header {
+  flex: 1;
+}
+
+#presentationBlock > #rows > #realTimeDataRow > .charts {
+  flex: 7;
+  margin: auto;
 }
 
 #presentationBlock > #requireStationTip {

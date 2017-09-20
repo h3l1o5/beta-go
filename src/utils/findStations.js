@@ -1,29 +1,41 @@
 import _ from 'lodash'
 
-const findPriorStations = (currentStation, stations) => {
-  const priorStationIDs = currentStation.prior
-  const priorStations = []
+import { secondToMinute } from '../utils/time'
 
-  _.forEach(priorStationIDs, neededStationID => {
-    priorStations.push(
-      _.find(stations, station => station.id === neededStationID)
+const findPriorStations = (currentStation, stations) => {
+  const priorStation = currentStation.prior
+  const priorStationsWithTravelTime = []
+
+  _.forEach(priorStation, target => {
+    const priorStationWithTravelTime = _.find(
+      stations,
+      station => station.id === target.id
     )
+    priorStationWithTravelTime.travelTime = secondToMinute(
+      Math.round(target.travelTime)
+    )
+    priorStationsWithTravelTime.push(priorStationWithTravelTime)
   })
 
-  return priorStations
+  return priorStationsWithTravelTime
 }
 
 const findNextStations = (currentStation, stations) => {
-  const nextStationIDs = currentStation.next
-  const nextStations = []
+  const nextStation = currentStation.next
+  const nextStationsWithTravelTime = []
 
-  _.forEach(nextStationIDs, neededStationID => {
-    nextStations.push(
-      _.find(stations, station => station.id === neededStationID)
+  _.forEach(nextStation, target => {
+    const nextStationWithTravelTime = _.find(
+      stations,
+      station => station.id === target.id
     )
+    nextStationWithTravelTime.travelTime = secondToMinute(
+      Math.round(target.travelTime)
+    )
+    nextStationsWithTravelTime.push(nextStationWithTravelTime)
   })
 
-  return nextStations
+  return nextStationsWithTravelTime
 }
 
 export { findPriorStations, findNextStations }

@@ -23,7 +23,7 @@ class NextStations extends Component {
   render() {
     return (
       <div id="nextStations">
-        <p className="sectionName">下一個收費點</p>
+        <p className="sectionName">下一個路段</p>
         <div id="info">
           {_.map(this.props.stationList, station => {
             let changeHighwayTip = ''
@@ -32,7 +32,7 @@ class NextStations extends Component {
             }
             return (
               <div key={station.id} className="listItem">
-                <span>{'----------->'}</span>
+                <span>{`-----${station.travelTime}----->`}</span>
                 <a
                   role="button"
                   tabIndex="0"

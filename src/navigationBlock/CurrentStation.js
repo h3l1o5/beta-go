@@ -7,7 +7,7 @@ const CurrentStation = props => {
   const { selectedStation } = props
   return (
     <div id="currentStation">
-      <p className="sectionName">目前選擇收費點</p>
+      <p className="sectionName">目前選擇路段</p>
       <div id="info">
         <p>
           {selectedStation.highway} {selectedStation.direction}

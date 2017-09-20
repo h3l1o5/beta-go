@@ -18,6 +18,10 @@
   margin: auto 0;
 }
 
+#priorStations .listItem span {
+  color: greenyellow;
+}
+
 #priorStations .listItem a {
   color: orange;
   cursor: pointer;

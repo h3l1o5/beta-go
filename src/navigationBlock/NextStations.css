@@ -18,6 +18,10 @@
   margin: auto 0;
 }
 
+#nextStations .listItem span {
+  color: greenyellow;
+}
+
 #nextStations .listItem a {
   color: orange;
   cursor: pointer;

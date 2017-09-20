@@ -1,5 +1,7 @@
 #currentStation #info {
+  padding: 0 5px;
   font-size: 0.9em;
+  color: #aaa;
   margin: auto;
   text-align: center;
 }
