@@ -1,31 +1,35 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
+import CurrentStation from './CurrentStation'
+import NextStations from './NextStations'
+import PriorStations from './PriorStations'
+import { findPriorStations, findNextStations } from '../utils/findStations'
+
 import './NavigationBlock.css'
 
-class NavigationBlock extends Component {
-  render() {
-    const { selectedStation } = this.props
+const NavigationBlock = props => {
+  const { selectedStation, stations } = props
+  if (selectedStation) {
+    const priorStations = findPriorStations(selectedStation, stations)
+    const nextStations = findNextStations(selectedStation, stations)
     return (
       <div id="navigationBlock">
-        <div id="priorStations">
-          <p className="sectionName">上一個路段</p>
-        </div>
-        <div id="currentStation">
-          <p className="sectionName">目前選擇路段</p>
-          <div id="currentStationInfo">
-            {selectedStation ? selectedStation.name : <h1>在地圖上選擇一個路段</h1>}
-          </div>
-        </div>
-        <div id="nextStations">
-          <p className="sectionName">下一個路段</p>
-        </div>
+        <PriorStations stationList={priorStations} />
+        <CurrentStation selectedStation={selectedStation} />
+        <NextStations stationList={nextStations} />
       </div>
     )
   }
+  return (
+    <div id="navigationBlock">
+      <div id="requireStationTip">在地圖上選擇一個路段</div>
+    </div>
+  )
 }
 
 const mapStateToProps = state => ({
+  stations: state.stations,
   selectedStation: state.selectedStation,
 })
 

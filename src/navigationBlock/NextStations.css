@@ -1,0 +1,31 @@
+#nextStations #info {
+  height: 100%;
+  width: 100%;
+  margin: auto;
+  padding-right: 5%;
+  display: flex;
+  flex-direction: column;
+}
+
+#nextStations .sectionName {
+  text-align: right;
+  padding-right: 30%;
+}
+
+#nextStations .listItem {
+  font-size: 0.9em;
+  position: relative;
+  margin: auto 0;
+}
+
+#nextStations .listItem a {
+  color: orange;
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+}
+
+#nextStations .listItem a:hover {
+  color: orangered;
+}
+

@@ -7,15 +7,15 @@ import { setUserSelectedHighway } from '../actions/userSelectionsActions'
 const highwayOptions = [
   {
     text: '國道1號',
-    value: '1',
+    value: '國道1號',
   },
   {
     text: '國道3號',
-    value: '3',
+    value: '國道3號',
   },
   {
     text: '國道5號',
-    value: '5',
+    value: '國道5號',
   },
 ]
 
@@ -31,10 +31,17 @@ class HighwaySelector extends Component {
           placeholder="選擇國道"
           options={highwayOptions}
           onChange={this.handleChange}
+          value={this.props.userSelections.highway}
         />
       </div>
     )
   }
 }
 
-export default connect(null, { setUserSelectedHighway })(HighwaySelector)
+const mapStateToProps = state => ({
+  userSelections: state.userSelections,
+})
+
+export default connect(mapStateToProps, { setUserSelectedHighway })(
+  HighwaySelector
+)

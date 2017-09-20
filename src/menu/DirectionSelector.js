@@ -7,11 +7,11 @@ import { setUserSelectedDirection } from '../actions/userSelectionsActions'
 const directionOptions = [
   {
     text: '南下',
-    value: 'S',
+    value: '南下',
   },
   {
     text: '北上',
-    value: 'N',
+    value: '北上',
   },
 ]
 
@@ -31,11 +31,17 @@ class DirectionSelector extends Component {
           placeholder="選擇方向"
           options={directionOptions}
           onChange={this.handleChange}
-          basic
+          value={this.props.userSelections.direction}
         />
       </div>
     )
   }
 }
 
-export default connect(null, { setUserSelectedDirection })(DirectionSelector)
+const mapStateToProps = state => ({
+  userSelections: state.userSelections,
+})
+
+export default connect(mapStateToProps, { setUserSelectedDirection })(
+  DirectionSelector
+)

@@ -55,23 +55,24 @@ const GettingStartedGoogleMap = withGoogleMap(props => (
 ))
 
 class Map extends Component {
-  componentDidUpdate(prevProps) {
-    const prevHighway = prevProps.userSelections.highway
-    const prevDirection = prevProps.userSelections.direction
-    const highway = this.props.userSelections.highway
-    const direction = this.props.userSelections.direction
+  state = {
+    displayedStations: null,
+  }
 
-    if (!prevHighway || !prevDirection) {
-      if (highway && direction) {
-        this.props.fetchAndSetStations(highway, direction)
-      }
-    } else {
-      const isHighwayEqual = prevHighway === highway
-      const isDirectionEqual = prevDirection === direction
-      if (!isHighwayEqual || !isDirectionEqual) {
-        this.props.fetchAndSetStations(highway, direction)
-      }
-    }
+  componentDidMount() {
+    this.props.fetchAndSetStations()
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { highway, direction } = nextProps.userSelections
+    const { stations } = nextProps
+
+    const displayedStations = _.filter(
+      stations,
+      station => station.highway === highway && station.direction === direction
+    )
+
+    this.setState({ displayedStations })
   }
 
   onStationClick = id => {
@@ -84,7 +85,7 @@ class Map extends Component {
       <GettingStartedGoogleMap
         containerElement={<div style={{ height: `100%` }} />}
         mapElement={<div style={{ height: `100%` }} />}
-        stations={this.props.stations}
+        stations={this.state.displayedStations}
         onStationClick={this.onStationClick}
         activeID={
           this.props.selectedStation ? this.props.selectedStation.id : null

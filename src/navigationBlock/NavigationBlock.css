@@ -8,28 +8,34 @@
   flex-direction: row;
 }
 
-#navigationBlock .sectionName {
-  color: #fff;
+#navigationBlock #requireStationTip {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin: auto;
   text-align: center;
 }
 
+#navigationBlock .sectionName {
+  color: #fff;
+}
+
 #navigationBlock #currentStation {
-  flex: 2;
-  background-color: red;
+  flex: 1;
+  /* background-color: red; */
   display: flex;
   flex-direction: column;
 }
 
-#navigationBlock #currentStation #currentStationInfo {
-  margin: auto;
-}
-
 #navigationBlock #priorStations {
-  flex: 1;
+  flex: 1.5;
   /* background-color: green; */
+  display: flex;
+  flex-direction: column;
 }
 
 #navigationBlock #nextStations {
-  flex: 1;
+  flex: 1.5;
   /* background-color: orange; */
+  display: flex;
+  flex-direction: column;  
 }

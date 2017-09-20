@@ -1,0 +1,33 @@
+#priorStations #info {
+  /* background-color: yellow; */
+  height: 100%;
+  width: 100%;
+  margin: auto;
+  padding-left: 5%;
+  display: flex;
+  flex-direction: column;
+}
+
+#priorStations .sectionName {
+  padding-left: 30%;
+}
+
+#priorStations .listItem {
+  font-size: 0.9em;
+  position: relative;
+  margin: auto 0;
+}
+
+#priorStations .listItem a {
+  color: orange;
+  cursor: pointer;
+}
+
+#priorStations .listItem a:hover {
+  color: orangered;
+}
+
+#priorStations .listItem span {
+  position: absolute;
+  right: 0;
+}

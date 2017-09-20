@@ -1,0 +1,9 @@
+#currentStation #info {
+  font-size: 0.9em;
+  margin: auto;
+  text-align: center;
+}
+
+#currentStation .sectionName {
+  text-align: center;
+}

@@ -41,7 +41,7 @@ class PresentationBlock extends Component {
             </div>
           </div>
         ) : (
-          <h1 id="tip">在地圖上選擇一個路段</h1>
+          <div id="requireStationTip">在地圖上選擇一個路段</div>
         )}
       </div>
     )

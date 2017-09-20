@@ -3,6 +3,16 @@ const _ = require('lodash')
 
 const Station = require('../../models/Station')
 
+router.get('/', (req, res, next) => {
+  Station.find({}, (err, stations) => {
+    if (err) {
+      return next(err)
+    }
+
+    res.json({ stations })
+  })
+})
+
 router.get('/:highway/:direction', (req, res, next) => {
   let highway = req.params.highway
   let direction = req.params.direction
