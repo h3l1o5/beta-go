@@ -95,12 +95,17 @@ class Map extends Component {
 }
 
 Map.propTypes = {
-  stations: PropTypes.array.isRequired,
+  stations: PropTypes.array,
+  selectedStation: PropTypes.object,
   userSelections: PropTypes.object.isRequired,
-  selectedStation: PropTypes.object.isRequired,
   fetchAndSetStations: PropTypes.func.isRequired,
   fetchAndSetSelectedStation: PropTypes.func.isRequired,
   setAmountPredictBarchartActiveID: PropTypes.func.isRequired,
+}
+
+Map.defaultProps = {
+  stations: null,
+  selectedStation: null,
 }
 
 const mapStateToProps = state => ({

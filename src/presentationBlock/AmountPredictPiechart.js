@@ -48,13 +48,18 @@ class AmountPredictPiechart extends Component {
             <PieChart>
               <Pie
                 data={this.state.data}
+                nameKey="name"
+                dataKey="value"
                 cx="50%"
                 cy="50%"
                 outerRadius={80}
                 fill="#8884d8"
+                legendType="circle"
                 label
               >
-                {this.state.data.map(entry => <Cell fill={entry.color} />)}
+                {this.state.data.map(entry => (
+                  <Cell key={entry.name} fill={entry.color} />
+                ))}
               </Pie>
               <Tooltip />
               <Legend />

@@ -31,11 +31,10 @@ class PriorStations extends Component {
               changeHighwayTip = `[${station.highway}] `
             }
             return (
-              <div className="listItem">
+              <div key={station.id} className="listItem">
                 <a
                   role="button"
                   tabIndex="0"
-                  key={station.id}
                   onClick={() =>
                     this.handleListItemClick(
                       station.id,

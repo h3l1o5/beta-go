@@ -30,8 +30,13 @@ const NavigationBlock = props => {
 }
 
 NavigationBlock.propTypes = {
-  selectedStation: PropTypes.object.isRequired,
-  stations: PropTypes.array.isRequired,
+  selectedStation: PropTypes.object,
+  stations: PropTypes.array,
+}
+
+NavigationBlock.defaultProps = {
+  selectedStation: null,
+  stations: null,
 }
 
 const mapStateToProps = state => ({
