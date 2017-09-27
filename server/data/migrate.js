@@ -3,8 +3,7 @@ const path = require('path')
 const _ = require('lodash')
 
 const Station = require('../models/Station')
-const StationData = require('../models/StationData')
-const TravelData = require('../models/TravelData')
+const StationPredictedData = require('../models/StationPredictedData')
 
 const ensureStationsExisting = () => {
   Station.find({}, (err, stations) => {
@@ -33,37 +32,41 @@ const ensureStationsExisting = () => {
   })
 }
 
-const ensureStationsPredictDataExisting = () => {
-  StationData.find({}, (err, stationsData) => {
-    if (_.isEmpty(stationsData)) {
+const ensureStationsPredictedDataExisting = () => {
+  StationPredictedData.find({}, (err, stationsPredictedData) => {
+    if (_.isEmpty(stationsPredictedData)) {
       const jsonData = JSON.parse(
         fs.readFileSync(
-          path.join(__dirname, 'stationsPredictData.json'),
+          path.join(__dirname, 'stationsPredictedData.json'),
           'utf8'
         )
       )
-      _.forEach(jsonData, stationData => {
-        const temp = _.map(stationData.data, hourlyData => ({
+      _.forEach(jsonData, station => {
+        const hourlyData = _.map(station.predictedData, hourlyData => ({
+          date: hourlyData.date,
           weekday: hourlyData.weekday,
-          date: new Date(hourlyData.date),
           time: hourlyData.time,
           總車流量:
-            Number.parseInt(hourlyData.typeA, 10) +
-            Number.parseInt(hourlyData.typeB, 10) +
-            Number.parseInt(hourlyData.typeC, 10) +
-            Number.parseInt(hourlyData.typeD, 10) +
-            Number.parseInt(hourlyData.typeE, 10),
-          小客車: Number.parseInt(hourlyData.typeA, 10),
-          小貨車: Number.parseInt(hourlyData.typeB, 10),
-          大客車: Number.parseInt(hourlyData.typeC, 10),
-          大貨車: Number.parseInt(hourlyData.typeD, 10),
-          聯結車: Number.parseInt(hourlyData.typeE, 10),
+            hourlyData.flow.typeA +
+            hourlyData.flow.typeB +
+            hourlyData.flow.typeC +
+            hourlyData.flow.typeD +
+            hourlyData.flow.typeE,
+          小客車: hourlyData.flow.typeA,
+          小貨車: hourlyData.flow.typeB,
+          大客車: hourlyData.flow.typeC,
+          大貨車: hourlyData.flow.typeD,
+          聯結車: hourlyData.flow.typeE,
+          速度: hourlyData.speed,
+          上一站: hourlyData.Prior,
+          下一站: hourlyData.Next,
         }))
-        const newStationData = new StationData({
-          id: stationData.id,
-          predictData: temp,
+
+        const newStationPredictedData = new StationPredictedData({
+          id: station.id,
+          hourlyData,
         })
-        newStationData
+        newStationPredictedData
           .save()
           .then(() => {})
           .catch(err => console.log(err))
@@ -73,31 +76,7 @@ const ensureStationsPredictDataExisting = () => {
   })
 }
 
-const ensureTravelDataExisting = () => {
-  TravelData.find({}, (err, travelsdata) => {
-    if (_.isEmpty(travelsdata)) {
-      const jsonData = JSON.parse(
-        fs.readFileSync(path.join(__dirname, 'travelsPredictData.json'), 'utf8')
-      )
-      _.forEach(jsonData, travelData => {
-        const newTravelData = new TravelData({
-          fromID: travelData.from,
-          toID: travelData.to,
-          data: travelData.data,
-        })
-
-        newTravelData
-          .save()
-          .then(() => {})
-          .catch(err => console.log(err))
-      })
-      console.log('migrate `TravelsData.json` to db')
-    }
-  })
-}
-
 module.exports = {
   ensureStationsExisting,
-  ensureStationsPredictDataExisting,
-  ensureTravelDataExisting,
+  ensureStationsPredictedDataExisting,
 }

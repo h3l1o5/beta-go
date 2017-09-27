@@ -49,7 +49,7 @@ const beautifyDataTime = data => {
 
 const secondToMinute = second => {
   let min = 0
-  let sec = second
+  let sec = Math.round(second)
   while (sec - 60 >= 0) {
     min += 1
     sec -= 60

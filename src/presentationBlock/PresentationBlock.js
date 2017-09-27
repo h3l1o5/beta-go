@@ -30,13 +30,13 @@ class PresentationBlock extends Component {
         {selectedStationPredictData ? (
           <div id="rows">
             <div id="realTimeDataRow">
-              <div className="header">道路即時資訊</div>
+              <div className="header">目前道路即時資訊</div>
               <div className="charts">
                 <h1>即時資訊圖表</h1>
               </div>
             </div>
             <div id="predictDataRow">
-              <div className="header">道路預測資訊</div>
+              <div className="header">未來一天道路預測資訊</div>
               <div className="charts">
                 <AmountPredictBarchart data={selectedStationPredictData} />
                 <AmountPredictPiechart />
