@@ -1,0 +1,21 @@
+#speedPredict {
+  display: flex;
+  flex-direction: column;
+}
+
+#speedPredict p#header {
+  text-align: center;
+}
+
+#speedPredict p#content {
+  margin: auto;
+  font-size: 100px;
+}
+
+#speedPredict p span {
+  font-size: 30px;
+}
+
+#speedPredict h1#tip {
+  margin: auto;
+}

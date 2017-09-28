@@ -27,14 +27,14 @@
 }
 
 #navigationBlock #priorStations {
-  flex: 1.7;
+  flex: 2.5;
   /* background-color: green; */
   display: flex;
   flex-direction: column;
 }
 
 #navigationBlock #nextStations {
-  flex: 1.7;
+  flex: 2.5;
   /* background-color: orange; */
   display: flex;
   flex-direction: column;  

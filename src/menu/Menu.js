@@ -21,7 +21,7 @@ class Menu extends Component {
   setDateTime = () => {
     moment.locale('zh-tw')
     const date = moment().format('YYYY[年]M[月]D[日] dddd')
-    const time = moment().format('ahh:mm:ss')
+    const time = moment().format('ah:mm:ss')
     this.setState({ date, time })
   }
 

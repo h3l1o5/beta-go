@@ -12,7 +12,7 @@ import {
   ResponsiveContainer,
 } from 'recharts'
 
-import { setAmountPredictBarchartActiveID } from '../actions/presentationBlockActions'
+import { setAmountPredictBarchartActiveID } from '../../actions/presentationBlockActions'
 
 import './AmountPredictBarchart.css'
 

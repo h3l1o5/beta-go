@@ -4,8 +4,9 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import _ from 'lodash'
 
-import AmountPredictBarchart from './AmountPredictBarchart'
-import AmountPredictPiechart from './AmountPredictPiechart'
+import AmountPredictBarchart from './predictedDataRow/AmountPredictBarchart'
+import AmountPredictPiechart from './predictedDataRow/AmountPredictPiechart'
+import SpeedPredict from './predictedDataRow/SpeedPredict'
 
 import './PresentationBlock.css'
 
@@ -30,19 +31,17 @@ class PresentationBlock extends Component {
         {selectedStationPredictData ? (
           <div id="rows">
             <div id="realTimeDataRow">
-              <div className="header">目前道路即時資訊</div>
-              <div className="charts">
+              <div className="header">目前路段即時資訊</div>
+              <div className="contents">
                 <h1>即時資訊圖表</h1>
               </div>
             </div>
             <div id="predictDataRow">
-              <div className="header">未來一天道路預測資訊</div>
-              <div className="charts">
+              <div className="header">未來一天路段預測資訊</div>
+              <div className="contents">
                 <AmountPredictBarchart data={selectedStationPredictData} />
                 <AmountPredictPiechart />
-                <div id="weather">
-                  <h1>車速預測</h1>
-                </div>
+                <SpeedPredict />
               </div>
             </div>
           </div>
