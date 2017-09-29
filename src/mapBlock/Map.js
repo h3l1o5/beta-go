@@ -1,21 +1,11 @@
-/* eslint-disable no-undef */
-
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
+import React from 'react'
 import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps'
-import _ from 'lodash'
-
-import { fetchAndSetStations } from '../actions/stationsActions'
-import { fetchAndSetSelectedStation } from '../actions/selectedStationActions'
-import { setAmountPredictBarchartActiveID } from '../actions/presentationBlockActions'
 
 import stationActive from '../icons/station_active.png'
 import stationNormal from '../icons/station_normal.png'
 
 // Wrap all `react-google-maps` components with `withGoogleMap` HOC
-// and name it GettingStartedGoogleMap
-const GettingStartedGoogleMap = withGoogleMap(props => (
+const Map = withGoogleMap(props => (
   <GoogleMap
     defaultZoom={8}
     defaultCenter={{ lat: 23.8, lng: 121 }}
@@ -53,69 +43,4 @@ const GettingStartedGoogleMap = withGoogleMap(props => (
   </GoogleMap>
 ))
 
-class Map extends Component {
-  state = {
-    displayedStations: null,
-  }
-
-  componentDidMount() {
-    this.props.fetchAndSetStations()
-  }
-
-  componentWillReceiveProps(nextProps) {
-    const { highway, direction } = nextProps.userSelections
-    const { stations } = nextProps
-
-    const displayedStations = _.filter(
-      stations,
-      station => station.highway === highway && station.direction === direction
-    )
-
-    this.setState({ displayedStations })
-  }
-
-  onStationClick = id => {
-    this.props.fetchAndSetSelectedStation(id)
-    this.props.setAmountPredictBarchartActiveID(null)
-  }
-
-  render() {
-    return (
-      <GettingStartedGoogleMap
-        containerElement={<div style={{ height: `100%` }} />}
-        mapElement={<div style={{ height: `100%` }} />}
-        stations={this.state.displayedStations}
-        onStationClick={this.onStationClick}
-        activeID={
-          this.props.selectedStation ? this.props.selectedStation.id : null
-        }
-      />
-    )
-  }
-}
-
-Map.propTypes = {
-  stations: PropTypes.array,
-  selectedStation: PropTypes.object,
-  userSelections: PropTypes.object.isRequired,
-  fetchAndSetStations: PropTypes.func.isRequired,
-  fetchAndSetSelectedStation: PropTypes.func.isRequired,
-  setAmountPredictBarchartActiveID: PropTypes.func.isRequired,
-}
-
-Map.defaultProps = {
-  stations: null,
-  selectedStation: null,
-}
-
-const mapStateToProps = state => ({
-  userSelections: state.userSelections,
-  stations: state.stations,
-  selectedStation: state.selectedStation,
-})
-
-export default connect(mapStateToProps, {
-  fetchAndSetStations,
-  fetchAndSetSelectedStation,
-  setAmountPredictBarchartActiveID,
-})(Map)
+export default Map
