@@ -7,39 +7,37 @@ import _ from 'lodash'
 import AmountPredictBarchart from './predictedDataRow/AmountPredictBarchart'
 import AmountPredictPiechart from './predictedDataRow/AmountPredictPiechart'
 import SpeedPredict from './predictedDataRow/SpeedPredict'
+import RealtimeDataRow from './realTimeDataRow/RealtimeDataRow'
 
 import './PresentationBlock.css'
 
 class PresentationBlock extends Component {
   state = {
-    selectedStationPredictedData: null,
+    predictedData: null,
+    realtimeData: null,
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.selectedStation.predictedData) {
       this.setState({
-        selectedStationPredictedData: nextProps.selectedStation.predictedData,
+        predictedData: nextProps.selectedStation.predictedData,
+        realtimeData: nextProps.selectedStation.realtimeData,
       })
     }
   }
 
   render() {
     const { selectedStation } = this.props
-    const { selectedStationPredictedData } = this.state
+    const { predictedData, realtimeData } = this.state
     return (
       <div id="presentationBlock">
-        {selectedStationPredictedData ? (
+        {predictedData ? (
           <div id="rows">
-            <div id="realTimeDataRow">
-              <div className="header">目前路段即時資訊</div>
-              <div className="contents">
-                <h1>即時資訊圖表</h1>
-              </div>
-            </div>
+            <RealtimeDataRow realtimeData={realtimeData} />
             <div id="predictedDataRow">
               <div className="header">未來一天路段預測資訊</div>
               <div className="contents">
-                <AmountPredictBarchart data={selectedStationPredictedData} />
+                <AmountPredictBarchart data={predictedData} />
                 <AmountPredictPiechart />
                 <SpeedPredict />
               </div>

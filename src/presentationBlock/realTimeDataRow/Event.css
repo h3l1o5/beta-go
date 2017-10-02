@@ -1,0 +1,7 @@
+#event {
+  background-color: red;
+}
+
+#event > #header {
+  text-align: center;
+}

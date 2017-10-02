@@ -1,0 +1,28 @@
+#realtimeDataRow {
+  display: flex;
+  flex-direction: column;
+}
+
+#realtimeDataRow > #header {
+  flex: 1;
+  text-align: center;
+  color: #fff;
+}
+
+#realtimeDataRow > #contents {
+  flex: 7;
+  display: flex;
+  flex-direction: row;
+}
+
+#realtimeDataRow > #contents > #weather {
+  flex: 1;
+}
+
+#realtimeDataRow > #contents > #windAndPOP {
+  flex: 1;
+}
+
+#realtimeDataRow > #contents > #event {
+  flex: 1;
+}

@@ -1,0 +1,7 @@
+#weather {
+  background-color: green;
+}
+
+#weather > #header {
+  text-align: center;
+}

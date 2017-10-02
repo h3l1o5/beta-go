@@ -51,20 +51,9 @@
   flex: 1;
 }
 
-#presentationBlock > #rows > #realTimeDataRow {
+#presentationBlock > #rows > #realtimeDataRow {
   flex: 1;
   height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-#presentationBlock > #rows > #realTimeDataRow > .header {
-  flex: 1;
-}
-
-#presentationBlock > #rows > #realTimeDataRow > .contents {
-  flex: 7;
-  margin: auto;
 }
 
 #presentationBlock > #requireStationTip {
