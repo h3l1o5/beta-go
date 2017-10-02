@@ -4,6 +4,7 @@ const _ = require('lodash')
 
 const Station = require('../models/Station')
 const StationPredictedData = require('../models/StationPredictedData')
+const StationRealtimeData = require('../models/StationRealtimeData')
 
 const ensureStationsExisting = () => {
   Station.find({}, (err, stations) => {
@@ -71,7 +72,30 @@ const ensureStationsPredictedDataExisting = () => {
           .then(() => {})
           .catch(err => console.log(err))
       })
-      console.log('migrate `StationsData.json` to db')
+      console.log('migrate `StationsPredictedData.json` to db')
+    }
+  })
+}
+
+const ensureStationsRealtimeDataExisting = () => {
+  StationRealtimeData.find({}, (err, stationsRealtimeData) => {
+    if (_.isEmpty(stationsRealtimeData)) {
+      const jsonData = JSON.parse(
+        fs.readFileSync(
+          path.join(__dirname, 'stationsRealtimeData.json'),
+          'utf8'
+        )
+      )
+
+      _.forEach(jsonData, station => {
+        const newStationRealtimeData = new StationRealtimeData(station)
+
+        newStationRealtimeData
+          .save()
+          .then(() => {})
+          .catch(err => console.log(err))
+      })
+      console.log('migrate `StationsRealtimeData.json` to db')
     }
   })
 }
@@ -79,4 +103,5 @@ const ensureStationsPredictedDataExisting = () => {
 module.exports = {
   ensureStationsExisting,
   ensureStationsPredictedDataExisting,
+  ensureStationsRealtimeDataExisting,
 }

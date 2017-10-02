@@ -20,10 +20,10 @@ class AmountPredictPiechart extends Component {
 
   componentWillReceiveProps(nextProps) {
     const { amountPredictBarchart } = nextProps.presentationBlock
-    const { predictData } = nextProps.selectedStation
+    const { predictedData } = nextProps.selectedStation
     if (amountPredictBarchart.activeID) {
       const targetData = _.find(
-        predictData,
+        predictedData,
         o => o._id === amountPredictBarchart.activeID
       )
       const data = [

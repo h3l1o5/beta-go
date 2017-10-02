@@ -20,7 +20,7 @@
   color: #fff;
 }
 
-#presentationBlock > #rows > #predictDataRow {
+#presentationBlock > #rows > #predictedDataRow {
   flex: 1;
   height: 100%;
   padding-top: 5px;
@@ -29,25 +29,25 @@
   flex-direction: column;
 }
 
-#presentationBlock > #rows > #predictDataRow > .header {
+#presentationBlock > #rows > #predictedDataRow > .header {
   flex: 1;
 }
 
-#presentationBlock > #rows > #predictDataRow > .contents {
+#presentationBlock > #rows > #predictedDataRow > .contents {
   flex: 7;
   display: flex;
   flex-direction: row;
 }
 
-#presentationBlock > #rows > #predictDataRow > .contents > #amountPredictBarchart {
+#presentationBlock > #rows > #predictedDataRow > .contents > #amountPredictBarchart {
   flex: 1;
 }
 
-#presentationBlock > #rows > #predictDataRow > .contents > #amountPredictPiechart {
+#presentationBlock > #rows > #predictedDataRow > .contents > #amountPredictPiechart {
   flex: 1;
 }
 
-#presentationBlock > #rows > #predictDataRow > .contents > #speedPredict {
+#presentationBlock > #rows > #predictedDataRow > .contents > #speedPredict {
   flex: 1;
 }
 

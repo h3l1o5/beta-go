@@ -11,7 +11,8 @@ export default (state = null, action = {}) => {
         region: action.region,
         prior: action.prior,
         next: action.next,
-        predictData: action.predictData,
+        predictedData: action.predictedData,
+        realtimeData: action.realtimeData,
       }
     default:
       return state

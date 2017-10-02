@@ -14,9 +14,9 @@ class SpeedPredict extends Component {
 
   componentWillReceiveProps(nextProps) {
     const { activeID } = nextProps.presentationBlock.amountPredictBarchart
-    const { predictData } = nextProps.selectedStation
+    const { predictedData } = nextProps.selectedStation
     if (activeID) {
-      const targetData = _.find(predictData, o => o._id === activeID)
+      const targetData = _.find(predictedData, o => o._id === activeID)
       const speed = Math.round(targetData.速度)
       const speedColor = colorSelector(speed)
       this.setState({ speed, speedColor })

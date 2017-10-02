@@ -10,7 +10,7 @@ const findPriorStations = (selectedStation, stations) => {
   _.forEach(priorStationsID, priorStationID => {
     const stationWithTravelTime = _.find(stations, { id: priorStationID })
     const timeIndex = new Date(Date.now()).getHours()
-    const travelTime = _.find(selectedStation.predictData[timeIndex].上一站, {
+    const travelTime = _.find(selectedStation.predictedData[timeIndex].上一站, {
       id: priorStationID,
     }).travelTime
     stationWithTravelTime.travelTime = secondToMinute(travelTime)
@@ -28,7 +28,7 @@ const findNextStations = (selectedStation, stations) => {
   _.forEach(nextStationsID, nextStationID => {
     const stationWithTravelTime = _.find(stations, { id: nextStationID })
     const timeIndex = new Date(Date.now()).getHours()
-    const travelTime = _.find(selectedStation.predictData[timeIndex].下一站, {
+    const travelTime = _.find(selectedStation.predictedData[timeIndex].下一站, {
       id: nextStationID,
     }).travelTime
     stationWithTravelTime.travelTime = secondToMinute(travelTime)

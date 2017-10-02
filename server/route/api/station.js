@@ -3,6 +3,7 @@ const _ = require('lodash')
 
 const Station = require('../../models/Station')
 const StationPredictedData = require('../../models/StationPredictedData')
+const StationRealtimeData = require('../../models/StationRealtimeData')
 
 router.get('/:stationID/info', (req, res, next) => {
   const stationID = req.params.stationID
@@ -14,7 +15,7 @@ router.get('/:stationID/info', (req, res, next) => {
   })
 })
 
-router.get('/:stationID/data', (req, res, next) => {
+router.get('/:stationID/predictedData', (req, res, next) => {
   const stationID = req.params.stationID
   StationPredictedData.findOne({ id: stationID }, (err, stationData) => {
     if (err) {
@@ -23,11 +24,17 @@ router.get('/:stationID/data', (req, res, next) => {
     const start = new Date(Date.now()).getHours()
     const end = start + 24
     const trimedHourlyData = stationData.hourlyData.slice(start, end)
-    const trimedStationData = {
-      id: stationData.id,
-      predictData: trimedHourlyData,
+    res.json({ predictedData: trimedHourlyData })
+  })
+})
+
+router.get('/:stationID/realtimeData', (req, res, next) => {
+  const stationID = req.params.stationID
+  StationRealtimeData.findOne({ id: stationID }, (err, stationData) => {
+    if (err) {
+      return next(err)
     }
-    res.json(trimedStationData)
+    res.json({ realtimeData: stationData })
   })
 })
 

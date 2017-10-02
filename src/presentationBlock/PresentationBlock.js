@@ -12,23 +12,23 @@ import './PresentationBlock.css'
 
 class PresentationBlock extends Component {
   state = {
-    selectedStationPredictData: null,
+    selectedStationPredictedData: null,
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.selectedStation.predictData) {
+    if (nextProps.selectedStation.predictedData) {
       this.setState({
-        selectedStationPredictData: nextProps.selectedStation.predictData,
+        selectedStationPredictedData: nextProps.selectedStation.predictedData,
       })
     }
   }
 
   render() {
     const { selectedStation } = this.props
-    const { selectedStationPredictData } = this.state
+    const { selectedStationPredictedData } = this.state
     return (
       <div id="presentationBlock">
-        {selectedStationPredictData ? (
+        {selectedStationPredictedData ? (
           <div id="rows">
             <div id="realTimeDataRow">
               <div className="header">目前路段即時資訊</div>
@@ -36,10 +36,10 @@ class PresentationBlock extends Component {
                 <h1>即時資訊圖表</h1>
               </div>
             </div>
-            <div id="predictDataRow">
+            <div id="predictedDataRow">
               <div className="header">未來一天路段預測資訊</div>
               <div className="contents">
-                <AmountPredictBarchart data={selectedStationPredictData} />
+                <AmountPredictBarchart data={selectedStationPredictedData} />
                 <AmountPredictPiechart />
                 <SpeedPredict />
               </div>
