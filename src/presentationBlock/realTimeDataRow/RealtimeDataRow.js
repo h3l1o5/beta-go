@@ -26,8 +26,8 @@ const RealtimeDataRow = props => {
 
   return (
     <div id="realtimeDataRow">
-      <div id="header">目前路段即時資訊</div>
-      <div id="contents">
+      <div className="header">目前路段即時資訊</div>
+      <div className="contents">
         <Weather data={weatherData} />
         <WindAndPOP data={windAndPOPData} />
         <Event data={eventData} />

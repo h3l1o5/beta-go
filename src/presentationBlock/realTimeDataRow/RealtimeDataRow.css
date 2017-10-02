@@ -3,26 +3,25 @@
   flex-direction: column;
 }
 
-#realtimeDataRow > #header {
+#realtimeDataRow > .header {
   flex: 1;
   text-align: center;
-  color: #fff;
 }
 
-#realtimeDataRow > #contents {
-  flex: 7;
+#realtimeDataRow > .contents {
+  flex: 9;
   display: flex;
   flex-direction: row;
 }
 
-#realtimeDataRow > #contents > #weather {
+#realtimeDataRow > .contents > #weather {
   flex: 1;
 }
 
-#realtimeDataRow > #contents > #windAndPOP {
+#realtimeDataRow > .contents > #windAndPOP {
   flex: 1;
 }
 
-#realtimeDataRow > #contents > #event {
+#realtimeDataRow > .contents > #event {
   flex: 1;
 }

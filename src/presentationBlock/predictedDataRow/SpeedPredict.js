@@ -28,7 +28,7 @@ class SpeedPredict extends Component {
   render() {
     const { speed, speedColor } = this.state
     return (
-      <div id="speedPredict">
+      <div id="speedPredict" className="card">
         <p id="header">單一小時平均車速預測</p>
         {speed ? (
           <p id="content" style={{ color: speedColor }}>

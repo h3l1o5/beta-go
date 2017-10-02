@@ -1,7 +1,57 @@
 #weather {
-  background-color: green;
+  display: flex;
+  flex-direction: column;
 }
 
 #weather > #header {
-  text-align: center;
+  flex: 1;
+  margin: 3% auto 0 auto;
+  font-size: 1.2em;
+  color: #777;
+}
+
+#weather > #contents {
+  flex: 7;
+  display: flex;
+  flex-direction: column;
+}
+
+#weather > #contents > #condition {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+}
+
+#weather > #contents > #condition > #wxIcon {
+  flex: 1.5;
+  margin: auto;
+  height: 100%;
+} 
+
+#weather > #contents > #condition > #discriptions {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+}
+
+#weather > #contents > #condition > #discriptions > #CI {
+  flex: 1;
+  color: pink;
+  font-size: 2em;
+  line-height: 2em;
+}
+
+#weather > #contents > #condition > #discriptions > #WX {
+  flex: 1;
+  color: blueviolet;
+  font-size: 2em;
+  line-height: 2em;
+}
+
+#weather > #contents > #temperature {
+  flex: 1;
+  color: teal;
+  margin: auto;
+  font-size: 3em;
+  line-height: 3em;
 }

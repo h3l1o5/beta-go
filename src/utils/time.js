@@ -60,4 +60,21 @@ const secondToMinute = second => {
   return `${min}分${sec}秒`
 }
 
-export { beautifyDataTime, secondToMinute }
+const dayOrNight = hour => {
+  if (!Number.isInteger(hour)) {
+    return console.error('error: hour must be a integer')
+  }
+
+  switch (true) {
+    case hour < 6:
+      return 'night'
+    case hour < 18:
+      return 'day'
+    case hour < 24:
+      return 'night'
+    default:
+      return console.error('error: hour must between 0~24')
+  }
+}
+
+export { beautifyDataTime, secondToMinute, dayOrNight }

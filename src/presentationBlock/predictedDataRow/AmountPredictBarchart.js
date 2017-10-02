@@ -24,7 +24,7 @@ class AmountPredictBarchart extends Component {
   render() {
     const { activeID } = this.props.presentationBlock.amountPredictBarchart
     return (
-      <div id="amountPredictBarchart">
+      <div id="amountPredictBarchart" className="card">
         <p>每小時總車流量預測</p>
         <ResponsiveContainer width="100%" height="80%">
           <BarChart
