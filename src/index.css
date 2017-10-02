@@ -3,6 +3,7 @@
 }
 
 body {
-  min-width: 1680px;
+  min-width: 1440px;
+  min-height: 720px;
   overflow: auto;
 }

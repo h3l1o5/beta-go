@@ -9,11 +9,11 @@
 
 #speedPredict p#content {
   margin: auto;
-  font-size: 100px;
+  font-size: 8em;
 }
 
 #speedPredict p span {
-  font-size: 30px;
+  font-size: 0.3em;
 }
 
 #speedPredict h1#tip {
