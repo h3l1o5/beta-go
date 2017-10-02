@@ -15,7 +15,13 @@
   display: flex;
 }
 
-#event > #contents > #tip, #event > #contents > #eventList {
+#event > #contents > #tip {
+  color: lightgreen;
+  margin: auto;
+  font-size: 2em;
+}
+
+#event > #contents > #eventList {
   color: crimson;
   margin: auto;
   font-size: 2em;

@@ -17,8 +17,9 @@
 #presentationBlock > #rows .header {
   margin: auto;
   font-size: 2em;
+  font-weight: bold;
   line-height: 1em;
-  color: palevioletred;
+  color: #000;
 }
 
 #presentationBlock > #rows > #predictedDataRow {

@@ -6,7 +6,7 @@
 #windAndPOP > #header {
   flex: 1;
   margin: 3% auto 0 auto;
-  font-size: 1.2em;
+  font-size: 120%;
   color: #777;
 }
 
@@ -17,30 +17,32 @@
 }
 
 #windAndPOP > #contents > #WDSD {
-  flex: 1;
+  flex: 1.5;
   width: 90%;
   margin: 10% auto 0 auto;
   border-bottom: 1px solid #aaa;
+  display: flex;
+  flex-direction: column;
 }
 
 #windAndPOP > #contents > #WDSD > #content {
-  color: royalblue;
+  color: teal;
   text-align: center;
-  font-size: 2em;
+  font-size: 200%;
 }
 
 #windAndPOP > #contents > #WDSD > #tip {
-  color: lightseagreen;
+  color: lightgreen;
   text-align: center;
   font-style: italic;
-  font-size: 1.2em;
+  font-size: 120%;
   margin-top: 10%;
 }
 
 #windAndPOP > #contents > #POP {
-  color: turquoise;
+  color: teal;
   flex: 1;
   margin: auto;
-  font-size: 2em;
-  line-height: 5em;
+  font-size: 200%;
+  padding-top: 20%;
 }

@@ -29,7 +29,7 @@ class AmountPredictBarchart extends Component {
         <ResponsiveContainer width="100%" height="80%">
           <BarChart
             data={this.props.data}
-            margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+            margin={{ top: 20, right: 30, left: 0, bottom: 5 }}
           >
             <XAxis
               dataKey="time"

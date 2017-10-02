@@ -1,3 +1,10 @@
+#amountPredictBarchart {
+  display: flex;
+  flex-direction: column;
+}
+
 #amountPredictBarchart > p {
-  text-align: center;
+  margin: 3% auto 5% auto;
+  font-size: 1.2em;
+  color: #777;
 }

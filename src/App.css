@@ -1,7 +1,6 @@
 #app {
   background-color: #009688;
-  height: 100vh;
-  max-height: 100vh;
+  height: 100%;
   padding: 0;
   display: flex;
   flex-direction: column;

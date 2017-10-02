@@ -4,7 +4,9 @@
 }
 
 #amountPredictPiechart > p {
-  text-align: center;
+  margin: 3% auto 0 auto;
+  font-size: 1.2em;
+  color: #777;
 }
 
 #amountPredictPiechart > #tip {
