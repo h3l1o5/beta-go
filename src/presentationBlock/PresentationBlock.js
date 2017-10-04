@@ -1,12 +1,9 @@
-/* eslint-disable */
-
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import _ from 'lodash'
+import { Dimmer, Loader, Segment } from 'semantic-ui-react'
 
-import AmountPredictBarchart from './predictedDataRow/AmountPredictBarchart'
-import AmountPredictPiechart from './predictedDataRow/AmountPredictPiechart'
-import SpeedPredict from './predictedDataRow/SpeedPredict'
+import PredictedDataRow from './predictedDataRow/PredictedDataRow'
 import RealtimeDataRow from './realTimeDataRow/RealtimeDataRow'
 
 import './PresentationBlock.css'
@@ -18,30 +15,27 @@ class PresentationBlock extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.selectedStation.predictedData) {
+    if (nextProps.selectedStation) {
+      const { predictedData, realtimeData } = nextProps.selectedStation
       this.setState({
-        predictedData: nextProps.selectedStation.predictedData,
-        realtimeData: nextProps.selectedStation.realtimeData,
+        predictedData,
+        realtimeData,
       })
     }
   }
 
   render() {
-    const { selectedStation } = this.props
     const { predictedData, realtimeData } = this.state
+    const { isLoading } = this.props.common
     return (
       <div id="presentationBlock">
+        <Dimmer active={isLoading}>
+          <Loader>載入中</Loader>
+        </Dimmer>
         {predictedData ? (
           <div id="rows">
             <RealtimeDataRow realtimeData={realtimeData} />
-            <div id="predictedDataRow">
-              <div className="header">未來一天路段預測資訊</div>
-              <div className="contents">
-                <AmountPredictBarchart data={predictedData} />
-                <AmountPredictPiechart />
-                <SpeedPredict />
-              </div>
-            </div>
+            <PredictedDataRow predictedData={predictedData} />
           </div>
         ) : (
           <div id="requireStationTip">在地圖上選擇一個路段</div>
@@ -51,8 +45,18 @@ class PresentationBlock extends Component {
   }
 }
 
+PresentationBlock.propTypes = {
+  selectedStation: PropTypes.object,
+  common: PropTypes.object.isRequired,
+}
+
+PresentationBlock.defaultProps = {
+  selectedStation: null,
+}
+
 const mapStateToProps = state => ({
   selectedStation: state.selectedStation,
+  common: state.common,
 })
 
 export default connect(mapStateToProps, null)(PresentationBlock)

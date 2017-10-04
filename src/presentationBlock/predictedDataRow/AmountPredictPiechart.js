@@ -39,6 +39,9 @@ class AmountPredictPiechart extends Component {
     }
   }
 
+  renderCustomizedLabel = ({ percent }) =>
+    percent <= 0.02 ? '' : `${(percent * 100).toFixed(0)}%`
+
   render() {
     return (
       <div id="amountPredictPiechart" className="card">
@@ -55,7 +58,8 @@ class AmountPredictPiechart extends Component {
                 outerRadius={80}
                 fill="#8884d8"
                 legendType="circle"
-                label
+                label={this.renderCustomizedLabel}
+                labelLine={false}
               >
                 {this.state.data.map(entry => (
                   <Cell key={entry.name} fill={entry.color} />

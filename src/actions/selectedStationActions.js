@@ -1,9 +1,13 @@
 import axios from 'axios'
 
-import { SET_SELECTED_STATION } from './types'
+import { SET_SELECTED_STATION, SET_IS_LOADING } from './types'
 import { beautifyDataTime } from '../utils/time'
 
 const fetchAndSetSelectedStation = stationID => dispatch => {
+  dispatch({
+    type: SET_IS_LOADING,
+    isLoading: true,
+  })
   axios.get(`/api/station/${stationID}/info`).then(infoRes => {
     const { id, name, highway, direction, region } = infoRes.data
     axios
@@ -24,6 +28,10 @@ const fetchAndSetSelectedStation = stationID => dispatch => {
               region,
               predictedData: beatyfiedPredictedData,
               realtimeData,
+            })
+            dispatch({
+              type: SET_IS_LOADING,
+              isLoading: false,
             })
           })
       })
