@@ -1,6 +1,7 @@
 const fs = require('fs')
 const path = require('path')
 const _ = require('lodash')
+const moment = require('moment')
 
 const Station = require('../models/Station')
 const StationPredictedData = require('../models/StationPredictedData')
@@ -89,7 +90,7 @@ const autoUpdatePredictedData = () => {
               }
             )
           })
-          console.log('update stations predicted data')
+          console.log(moment().format(), 'update stations predicted data')
         }, 5000)
       }
     })
@@ -182,7 +183,7 @@ const autoUpdateRealtimeData = () => {
               }
             )
           })
-          console.log('update stations realtime data')
+          console.log(moment().format(), 'update stations realtime data')
         }, 1000)
       }
     })

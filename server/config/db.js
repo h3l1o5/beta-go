@@ -4,7 +4,7 @@ const {
   ensureStationsExisting,
   ensureStationsPredictedDataExisting,
   ensureStationsRealtimeDataExisting,
-} = require('../data/migrate')
+} = require('./migrateData')
 
 module.exports = () => {
   mongoose.Promise = global.Promise
