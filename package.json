@@ -40,7 +40,8 @@
     "clean": "rm -rf build/",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "server": "nodemon --watch server server/index.js",
+    "server-dev": "nodemon --watch server server/index.js",
+    "server-prod": "NODE_ENV=production PORT=443 node server/index.js",
     "start-prod": "npm run build && sudo PORT=80 babel-node -- server/index.js"
   },
   "proxy": "http://localhost:3001/"

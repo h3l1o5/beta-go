@@ -6,7 +6,7 @@
 #event > #header {
   flex: 1;
   margin: 3% auto 0 auto;
-  font-size: 1.2em;
+  font-size: 120%;
   color: #777;
 }
 
@@ -18,11 +18,15 @@
 #event > #contents > #tip {
   color: lightgreen;
   margin: auto;
-  font-size: 2em;
+  font-size: 200%;
 }
 
 #event > #contents > #eventList {
-  color: crimson;
   margin: auto;
-  font-size: 2em;
+}
+
+#event > #contents > #eventList > #event {
+  color: crimson;
+  margin: 15px 0;
+  font-size: 200%;
 }
