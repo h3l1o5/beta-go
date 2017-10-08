@@ -29,7 +29,7 @@ class PresentationBlock extends Component {
     const { isLoading } = this.props.common
     return (
       <div id="presentationBlock">
-        <Dimmer active={isLoading}>
+        <Dimmer page active={isLoading}>
           <Loader>載入中</Loader>
         </Dimmer>
         {predictedData ? (
